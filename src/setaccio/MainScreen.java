@@ -6,8 +6,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import static setaccio.IOHandler.DoFilterFile;
-import static setaccio.IOHandler.hmap;
+import static setaccio.InputHandler.DoFilterFile;
+import static setaccio.InputHandler.hmap;
 
 /**
  *
