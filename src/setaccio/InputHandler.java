@@ -70,10 +70,10 @@ public class InputHandler {
                         linha = br.readLine();
                         linha = br.readLine();
                         linha = br.readLine();
-                        linha = br.readLine();
                         if (linha.contains("Entry: ")) {
                             sc.setTarget(linha.substring(linha.indexOf("Entry: ") + 7, linha.indexOf("Low:") - 1));
-                            System.out.println("Target: " + sc.getTarget());
+                        } else if (linha.contains("Player")) {
+                            sc.setTarget("Player");
                         }
                         if (hmap.containsKey(paramNpcEntry))
                             hmap.get(paramNpcEntry).addCast(sc);

@@ -1,0 +1,219 @@
+ 06:57:15.633 30131 Cleave Player
+ 06:57:23.649 30131 Cleave Player
+ 06:57:28.258 25653 Tail Sweep null
+ 06:57:31.914 30129 Charred Earth null
+ 06:57:33.899 30131 Cleave Player
+ 06:57:39.930 30131 Cleave Player
+ 06:57:46.086 30210 Smoldering Breath null
+ 06:57:48.086 30131 Cleave Player
+ 06:57:48.961 25653 Tail Sweep null
+ 06:57:52.617 30129 Charred Earth null
+ 06:57:54.617 30131 Cleave Player
+ 06:58:02.633 30131 Cleave Player
+ 06:58:06.039 36922 Bellowing Roar null
+ 06:58:14.071 30131 Cleave Player
+ 06:58:14.492 25653 Tail Sweep null
+ 06:58:18.930 30210 Smoldering Breath null
+ 06:58:31.539 37098 Rain of Bones null
+ 06:58:31.961 30170 Summon Bone Skeletons null
+ 06:58:31.961 37091 Rain of Bones null
+ 06:58:32.352 37091 Rain of Bones null
+ 06:58:32.742 37091 Rain of Bones null
+ 06:58:33.149 37091 Rain of Bones null
+ 06:58:33.555 37091 Rain of Bones null
+ 06:58:33.961 37091 Rain of Bones null
+ 06:58:34.352 30170 Summon Bone Skeletons null
+ 06:58:34.352 37091 Rain of Bones null
+ 06:58:34.742 37091 Rain of Bones null
+ 06:58:35.149 37091 Rain of Bones null
+ 06:58:35.555 37091 Rain of Bones null
+ 06:58:35.946 37091 Rain of Bones null
+ 06:58:36.352 37091 Rain of Bones null
+ 06:58:36.758 30170 Summon Bone Skeletons null
+ 06:58:36.758 37091 Rain of Bones null
+ 06:58:37.149 37091 Rain of Bones null
+ 06:58:37.539 37091 Rain of Bones null
+ 06:58:37.946 30170 Summon Bone Skeletons null
+ 06:58:37.946 37091 Rain of Bones null
+ 06:58:38.352 37091 Rain of Bones null
+ 06:58:38.758 37091 Rain of Bones null
+ 06:58:39.149 37091 Rain of Bones null
+ 06:58:39.555 30170 Summon Bone Skeletons null
+ 06:58:39.555 37091 Rain of Bones null
+ 06:58:39.946 37091 Rain of Bones null
+ 06:58:40.352 37091 Rain of Bones null
+ 06:58:40.758 37091 Rain of Bones null
+ 06:58:41.149 37091 Rain of Bones null
+ 06:58:41.555 37091 Rain of Bones null
+ 06:58:41.946 37091 Rain of Bones null
+ 06:58:42.352 37091 Rain of Bones null
+ 06:58:42.555 37091 Rain of Bones null
+ 06:58:44.711 30127 Searing Cinders Player
+ 06:58:44.711 30128 Smoking Blast Player
+ 06:58:47.133 30127 Searing Cinders Player
+ 06:58:47.133 30128 Smoking Blast Player
+ 06:58:47.352 30127 Searing Cinders Player
+ 06:58:47.352 37057 Smoking Blast Player
+ 06:58:50.774 30127 Searing Cinders Player
+ 06:58:50.774 30128 Smoking Blast Player
+ 06:58:53.211 30127 Searing Cinders Player
+ 06:58:53.211 30128 Smoking Blast Player
+ 06:58:53.430 30127 Searing Cinders Player
+ 06:58:53.430 37057 Smoking Blast Player
+ 06:58:54.414 30127 Searing Cinders Player
+ 06:58:54.414 30128 Smoking Blast Player
+ 06:58:55.649 30127 Searing Cinders Player
+ 06:58:55.649 30128 Smoking Blast Player
+ 06:58:56.867 30127 Searing Cinders Player
+ 06:58:56.867 30128 Smoking Blast Player
+ 06:58:58.086 30127 Searing Cinders Player
+ 06:58:58.086 30128 Smoking Blast Player
+ 06:58:59.289 30127 Searing Cinders Player
+ 06:58:59.289 30128 Smoking Blast Player
+ 06:59:29.930 25653 Tail Sweep null
+ 06:59:30.211 30131 Cleave Player
+ 06:59:33.586 30129 Charred Earth null
+ 06:59:37.617 30131 Cleave Player
+ 06:59:45.602 30131 Cleave Player
+ 06:59:51.414 30210 Smoldering Breath null
+ 06:59:55.508 30129 Charred Earth null
+ 06:59:59.180 25653 Tail Sweep null
+ 07:00:01.539 30131 Cleave Player
+ 07:00:11.399 36922 Bellowing Roar null
+ 07:00:15.414 30131 Cleave Player
+ 07:00:29.617 37098 Rain of Bones null
+ 07:00:30.024 30170 Summon Bone Skeletons null
+ 07:00:30.024 37091 Rain of Bones null
+ 07:00:30.414 37091 Rain of Bones null
+ 07:00:30.821 37091 Rain of Bones null
+ 07:00:31.227 37091 Rain of Bones null
+ 07:00:31.617 37091 Rain of Bones null
+ 07:00:32.024 37091 Rain of Bones null
+ 07:00:32.414 30170 Summon Bone Skeletons null
+ 07:00:32.414 37091 Rain of Bones null
+ 07:00:32.821 37091 Rain of Bones null
+ 07:00:33.211 37091 Rain of Bones null
+ 07:00:33.617 37091 Rain of Bones null
+ 07:00:34.024 37091 Rain of Bones null
+ 07:00:34.430 37091 Rain of Bones null
+ 07:00:34.821 30170 Summon Bone Skeletons null
+ 07:00:34.821 37091 Rain of Bones null
+ 07:00:35.211 37091 Rain of Bones null
+ 07:00:35.633 37091 Rain of Bones null
+ 07:00:36.024 30170 Summon Bone Skeletons null
+ 07:00:36.024 37091 Rain of Bones null
+ 07:00:36.430 37091 Rain of Bones null
+ 07:00:36.821 37091 Rain of Bones null
+ 07:00:37.227 37091 Rain of Bones null
+ 07:00:37.633 30170 Summon Bone Skeletons null
+ 07:00:37.633 37091 Rain of Bones null
+ 07:00:38.024 37091 Rain of Bones null
+ 07:00:38.430 37091 Rain of Bones null
+ 07:00:38.836 37091 Rain of Bones null
+ 07:00:39.227 37091 Rain of Bones null
+ 07:00:39.633 37091 Rain of Bones null
+ 07:00:40.024 37091 Rain of Bones null
+ 07:00:40.430 37091 Rain of Bones null
+ 07:00:40.617 37091 Rain of Bones null
+ 07:00:41.789 30127 Searing Cinders Player
+ 07:00:41.789 37057 Smoking Blast Player
+ 07:00:42.789 30127 Searing Cinders Player
+ 07:00:42.789 30128 Smoking Blast Player
+ 07:00:45.227 30127 Searing Cinders Player
+ 07:00:45.227 30128 Smoking Blast Player
+ 07:00:46.446 30130 Distracting Ash Player
+ 07:00:46.664 30127 Searing Cinders Player
+ 07:00:46.664 37057 Smoking Blast Player
+ 07:00:47.664 30127 Searing Cinders Player
+ 07:00:47.664 30128 Smoking Blast Player
+ 07:00:48.883 30127 Searing Cinders Player
+ 07:00:48.883 30128 Smoking Blast Player
+ 07:00:53.742 30127 Searing Cinders Player
+ 07:00:53.742 30128 Smoking Blast Player
+ 07:00:53.961 30127 Searing Cinders Player
+ 07:00:53.961 37057 Smoking Blast Player
+ 07:00:56.180 30127 Searing Cinders Player
+ 07:00:56.180 30128 Smoking Blast Player
+ 07:00:57.383 30127 Searing Cinders Player
+ 07:00:57.383 30128 Smoking Blast Player
+ 07:01:20.305 30131 Cleave Player
+ 07:01:30.477 30129 Charred Earth null
+ 07:01:38.492 30131 Cleave Player
+ 07:01:41.414 25653 Tail Sweep null
+ 07:01:48.258 30210 Smoldering Breath null
+ 07:01:48.680 30129 Charred Earth null
+ 07:01:52.696 30131 Cleave Player
+ 07:02:04.727 30131 Cleave Player
+ 07:02:08.227 36922 Bellowing Roar null
+ 07:02:21.555 37098 Rain of Bones null
+ 07:02:21.961 30170 Summon Bone Skeletons null
+ 07:02:21.961 37091 Rain of Bones null
+ 07:02:22.367 37091 Rain of Bones null
+ 07:02:22.758 37091 Rain of Bones null
+ 07:02:23.180 37091 Rain of Bones null
+ 07:02:23.555 37091 Rain of Bones null
+ 07:02:23.961 37091 Rain of Bones null
+ 07:02:24.367 30170 Summon Bone Skeletons null
+ 07:02:24.367 37091 Rain of Bones null
+ 07:02:24.758 37091 Rain of Bones null
+ 07:02:25.149 37091 Rain of Bones null
+ 07:02:25.571 37091 Rain of Bones null
+ 07:02:25.961 37091 Rain of Bones null
+ 07:02:26.352 37091 Rain of Bones null
+ 07:02:26.758 30170 Summon Bone Skeletons null
+ 07:02:26.758 37091 Rain of Bones null
+ 07:02:27.164 37091 Rain of Bones null
+ 07:02:27.555 37091 Rain of Bones null
+ 07:02:27.961 30170 Summon Bone Skeletons null
+ 07:02:27.961 37091 Rain of Bones null
+ 07:02:28.367 37091 Rain of Bones null
+ 07:02:28.758 37091 Rain of Bones null
+ 07:02:29.164 37091 Rain of Bones null
+ 07:02:29.555 30170 Summon Bone Skeletons null
+ 07:02:29.555 37091 Rain of Bones null
+ 07:02:29.961 37091 Rain of Bones null
+ 07:02:30.352 37091 Rain of Bones null
+ 07:02:30.758 37091 Rain of Bones null
+ 07:02:31.164 37091 Rain of Bones null
+ 07:02:31.555 37091 Rain of Bones null
+ 07:02:31.961 37091 Rain of Bones null
+ 07:02:32.352 37091 Rain of Bones null
+ 07:02:32.555 37091 Rain of Bones null
+ 07:02:33.727 30127 Searing Cinders Player
+ 07:02:33.727 37057 Smoking Blast Player
+ 07:02:34.742 30127 Searing Cinders Player
+ 07:02:34.742 30128 Smoking Blast Player
+ 07:02:35.946 30130 Distracting Ash Player
+ 07:02:37.164 30127 Searing Cinders Player
+ 07:02:37.164 30128 Smoking Blast Player
+ 07:02:38.383 30127 Searing Cinders Player
+ 07:02:38.383 30128 Smoking Blast Player
+ 07:02:39.586 30127 Searing Cinders Player
+ 07:02:39.586 30128 Smoking Blast Player
+ 07:02:39.821 30127 Searing Cinders Player
+ 07:02:39.821 37057 Smoking Blast Player
+ 07:02:40.821 30127 Searing Cinders Player
+ 07:02:40.821 30128 Smoking Blast Player
+ 07:02:43.258 30127 Searing Cinders Player
+ 07:02:43.258 30128 Smoking Blast Player
+ 07:02:44.461 30127 Searing Cinders Player
+ 07:02:44.461 30128 Smoking Blast Player
+ 07:02:45.696 30127 Searing Cinders Player
+ 07:02:45.696 30128 Smoking Blast Player
+ 07:02:45.899 30127 Searing Cinders Player
+ 07:02:45.899 37057 Smoking Blast Player
+ 07:02:48.117 30127 Searing Cinders Player
+ 07:02:48.117 30128 Smoking Blast Player
+ 07:02:49.352 30127 Searing Cinders Player
+ 07:02:49.352 30128 Smoking Blast Player
+ 07:03:13.899 25653 Tail Sweep null
+ 07:03:23.071 30131 Cleave Player
+ 07:03:23.633 30129 Charred Earth null
+ 07:03:31.664 30131 Cleave Player
+ 07:03:33.367 25653 Tail Sweep null
+ 07:03:39.024 30210 Smoldering Breath null
+ 07:03:41.039 30131 Cleave Player
+ 07:03:41.899 30129 Charred Earth null
+ 07:03:47.914 30131 Cleave Player
+ 07:03:54.071 25653 Tail Sweep null
+ 07:03:55.930 30131 Cleave Player
