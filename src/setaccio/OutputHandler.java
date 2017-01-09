@@ -18,12 +18,12 @@ public class OutputHandler {
             Iterator<String> iter = hmap.keySet().iterator();
             while(iter.hasNext()){
                 String key = iter.next();
-                FilteredInfo info = hmap.get(key);
+                Unit info = hmap.get(key);
                 if (info != null) {
-                    for (SpellCast cast : info.getCasts()) {
-                        System.out.println("Time: " + cast.getTime() + " Id: " + cast.getSpellId() + " (" + cast.getNome() + ") Target: " + cast.getTarget());
-                        writer.println(cast.getTime() + " " + cast.getSpellId() + " " + cast.getNome() + " " + cast.getTarget());
-                    }
+                    //for (SpellCast cast : info.getCasts()) {
+                    //    System.out.println("Time: " + cast.getTime() + " Id: " + cast.getSpellId() + " (" + cast.getNome() + ") Target: " + cast.getTarget());
+                    //    writer.println(cast.getTime() + " " + cast.getSpellId() + " " + cast.getNome() + " " + cast.getTarget());
+                    //}
                 }
             }
             writer.close();

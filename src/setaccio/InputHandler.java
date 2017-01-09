@@ -3,91 +3,122 @@ package setaccio;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import static setaccio.OutputHandler.WriteOutputFile;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
  * @author Gustavo Soares <gustavosc_17@hotmail.com>
  */
 public class InputHandler {
-    public static HashMap<String, FilteredInfo> hmap = new HashMap<>();
+    public static HashMap<String, Unit> hmap = new HashMap<>();
+    public static List<String> list = new ArrayList<>();
 
-    private static void FiltrarSpellId(String input, SpellCast sc) {
-        int inicio = input.indexOf("(", 16);
-        int fim = input.indexOf(")", 16);
-        String nome = input.substring(16, inicio - 1);
-        String id = input.substring(inicio + 1, fim);
-        sc.setSpellId(id);
-        sc.setNome(nome);
+    public static String FindFirstPacketLine(BufferedReader br) {
+        String lines;
+        try {
+            lines = br.readLine();
+            while (lines != null && !lines.isEmpty()) {
+                lines = br.readLine();
+            }
+            lines = br.readLine();
+            return lines;
+        } catch (IOException ex) {
+            System.out.println("Failed to find next packet.");
+        }
+        return null;
+    }
+    
+    public static String FindLastPacketLine(BufferedReader br) {
+        String line;
+        try {
+            line = br.readLine();
+            while (line != null && !line.isEmpty()) {
+                line = br.readLine();
+            }
+            return line;
+        } catch (IOException ex) {
+            System.out.println("Failed to find last packet line.");
+        }
+        return null;
     }
 
     public static void DoFilterFile(String nomeArq, String paramPacket, String paramNpcEntry) {
         try {
             FileReader file = new FileReader(nomeArq);
             BufferedReader br = new BufferedReader(file);
-            String linha = br.readLine();
-
-            while (linha != null)
+            String linha = FindFirstPacketLine(br);
+            while (linha != null && !linha.isEmpty())
             {
-                if (linha.contains(paramPacket)) {
-                    int index = linha.indexOf("Time:");
-                    String time =(String)linha.subSequence(index + 16, index + 29);
-                    linha = br.readLine();
-                    if (linha.contains("Entry: " + paramNpcEntry)) {
-                        SpellCast sc = new SpellCast();
-                        FilteredInfo f = new FilteredInfo();
-                        sc.setTime(time);
-                        f.setNpcId(paramNpcEntry);
+                String opcode = (linha.split(" "))[1];
+                Packet packet = null;
+                switch(opcode) {
+                    case "SMSG_AURA_UPDATE":
+                        //packet = new AuraUpdatePacket();
+                        break;
+                    case "SMSG_SPELL_START":
+                        packet = new SpellStartPacket();
+                        break;
+                    case "SMSG_SPELL_GO":
+                        //packet = new SpellGoPacket();
+                        break;
+                    case "SMSG_ATTACK_START":
+                        //packet = new AttackStartPacket();
+                        break;
+                    case "SMSG_AI_REACTION":
+                        //packet = new AiReactionPacket();
+                        break;
+                    case "SMSG_PARTY_KILL_LOG":
+                        //packet = new KillLogPacket();
+                        break;
+                    default:
+                        break;
+                }
+
+                if (packet != null) {
+                    //Loop till the packet ends
+                    while (!linha.isEmpty()) {
+                        //acumular
+                        list.add(linha);
                         linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        FiltrarSpellId(linha, sc);
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        linha = br.readLine();
-                        if (linha.contains("Entry: ")) {
-                            sc.setTarget(linha.substring(linha.indexOf("Entry: ") + 7, linha.indexOf("Low:") - 1));
-                        } else if (linha.contains("Player")) {
-                            sc.setTarget("Player");
-                        }
-                        if (hmap.containsKey(paramNpcEntry))
-                            hmap.get(paramNpcEntry).addCast(sc);
-                        else {
-                            f.addCast(sc);
-                            hmap.put(f.getNpcId(), f);
-                        }
+                    }
+                    
+                    packet.parseInfo(list);
+                    list.clear();
+
+                    if (hmap.containsKey(packet.getOwner().getGuid()))
+                        hmap.get(packet.getOwner().getGuid()).addPacket(packet);
+                    else {
+                        hmap.put(packet.getOwner().getGuid(), packet.getOwner());
                     }
                 }
-                linha = br.readLine();
+                linha = FindFirstPacketLine(br);
             }
             br.close();
-            
-            WriteOutputFile();
+
+            /*
+            Iterator it = hmap.entrySet().iterator();
+            while (it.hasNext()) {
+                Map.Entry pair = (Map.Entry)it.next();
+                Unit u = (Unit)pair.getValue();
+                System.out.println("Guid: " + pair.getKey() + " Type: " + u.getType() + " Name: " + u.getName() + " Entry: " + u.getEntry());
+                it.remove();
+            }
+            */
+            Unit u = hmap.get("0x202F3C428010D240004427000060D812");
+            if (u != null) {
+                System.out.println("Founded.");
+                List<Packet> l = u.getPacketByType("SMSG_SPELL_START");
+                for (Packet p : l) {
+                    SpellStartPacket pp = (SpellStartPacket)p;
+                    System.out.println("SpellId: " + pp.getSpellId() + " SpellName: " + pp.getSpellName());
+                }
+            }
+            System.out.println("----------------------FIM-----------------------------");
+            //WriteOutputFile();
         } catch(IOException ex) {
             System.out.println("Falha na Leitura: " + ex.toString());
         } /*catch(NullPointerException ex) {

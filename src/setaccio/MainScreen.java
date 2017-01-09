@@ -1,6 +1,5 @@
 package setaccio;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
@@ -32,8 +31,10 @@ public class MainScreen extends javax.swing.JFrame {
         jButtonFilter = new javax.swing.JButton();
         jTextFieldNpcEntry = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jButtonSelectFile.setText("Selecionar arquivo");
         jButtonSelectFile.addActionListener(new java.awt.event.ActionListener() {
@@ -41,13 +42,22 @@ public class MainScreen extends javax.swing.JFrame {
                 jButtonSelectFileActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonSelectFile);
+        jButtonSelectFile.setBounds(10, 11, 137, 23);
 
         jComboBoxSelectPacketType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar Packets", "SMSG_SPELL_START", "SMSG_SPELL_GO" }));
+        getContentPane().add(jComboBoxSelectPacketType);
+        jComboBoxSelectPacketType.setBounds(10, 40, 137, 20);
 
         jListSpells.setEnabled(false);
         jScrollPane1.setViewportView(jListSpells);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(165, 11, 101, 130);
+
         jLabelLoadedFile.setText("Nenhum arquivo carregado.");
+        getContentPane().add(jLabelLoadedFile);
+        jLabelLoadedFile.setBounds(39, 213, 322, 23);
 
         jButtonFilter.setText("Filtrar");
         jButtonFilter.addActionListener(new java.awt.event.ActionListener() {
@@ -55,67 +65,29 @@ public class MainScreen extends javax.swing.JFrame {
                 jButtonFilterActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonFilter);
+        jButtonFilter.setBounds(52, 146, 61, 23);
 
         jTextFieldNpcEntry.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldNpcEntryKeyTyped(evt);
             }
         });
+        getContentPane().add(jTextFieldNpcEntry);
+        jTextFieldNpcEntry.setBounds(65, 78, 82, 20);
 
         jLabel1.setText("Npc Entry:");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(10, 81, 51, 14);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabelLoadedFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextFieldNpcEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jComboBoxSelectPacketType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jButtonSelectFile, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)))
-                .addContainerGap(416, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jButtonFilter)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButtonSelectFile)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxSelectPacketType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextFieldNpcEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(5, 5, 5)
-                .addComponent(jButtonFilter)
-                .addGap(44, 44, 44)
-                .addComponent(jLabelLoadedFile, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(311, Short.MAX_VALUE))
-        );
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundoMadeira.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 1010, 550);
 
-        pack();
+        setSize(new java.awt.Dimension(1026, 586));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSelectFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelectFileActionPerformed
@@ -147,8 +119,8 @@ public class MainScreen extends javax.swing.JFrame {
         DoFilterFile(FILE_NAME, jComboBoxSelectPacketType.getSelectedItem().toString(), jTextFieldNpcEntry.getText());
         DefaultListModel listModel = new DefaultListModel();
         HashSet<String> spells = new HashSet<>();
-        if (hmap.containsKey(jTextFieldNpcEntry.getText()))
-            spells = hmap.get(jTextFieldNpcEntry.getText()).getUniqueCasts();
+        //if (hmap.containsKey(jTextFieldNpcEntry.getText()))
+        //    spells = hmap.get(jTextFieldNpcEntry.getText()).getUniqueCasts();
         for (String spId : spells)
             listModel.addElement(spId);
         jListSpells.setModel(listModel);
@@ -193,6 +165,7 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSelectFile;
     private javax.swing.JComboBox<String> jComboBoxSelectPacketType;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelLoadedFile;
     private javax.swing.JList<String> jListSpells;
     private javax.swing.JScrollPane jScrollPane1;
