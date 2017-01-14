@@ -31,7 +31,7 @@ public class InputHandler {
         }
         return null;
     }
-    
+
     public static String FindLastPacketLine(BufferedReader br) {
         String line;
         try {
@@ -96,7 +96,7 @@ public class InputHandler {
                         packet.getOwner().addPacket(packet);
                         hmap.put(packet.getOwner().getGuid(), packet.getOwner());
                     }
-                    
+
                     //List<Packet> l = packet.getOwner().getPacketList();
                     //for (Packet p : l) {
                     //    System.out.println("Packet: " + p.getOpcode() + " Owner: " + p.getOwner().getGuid() + " Entry: " + p.getOwner().getEntry() + " Nome: " + p.getOwner().getName());

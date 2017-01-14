@@ -44,7 +44,7 @@ public class SpellStartPacket extends Packet {
             target = ExtractUnit(lines.get(getLineIndexThatContainsPrefix(lines, "(Cast) (Target) Unit: Full:")));
         }
         /*
-        (Cast) (Target) Name: 
+        (Cast) (Target) Name:
 (Cast) [0] HitTarget: Full: 0x202F3C428010DB40004427000060DBBA Creature/0 R3023/S17447 Map: 532 (Karazhan) Entry: 17261 (Restless Skeleton) Low: 6347706
 (Cast) [1] HitTarget: Full: 0x202F3C428010DB40004427000060DBBE Creature/0 R3023/S17447 Map: 532 (Karazhan) Entry: 17261 (Restless Skeleton) Low: 6347710
 (Cast) [2] HitTarget: Full: 0x202F3C428010DB40004427000060DBBF Creature/0 R3023/S17447 Map: 532 (Karazhan) Entry: 17261 (Restless Skeleton) Low: 6347711

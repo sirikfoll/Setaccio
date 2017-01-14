@@ -12,9 +12,9 @@ public abstract class Packet implements Comparable<Packet> {
     private String opcode;
     private LocalDateTime dateTime;
     private Unit owner;
-    
+
     public Packet() {
-        
+
     }
 
     public abstract void parseInfo(List<String> l);
@@ -33,7 +33,7 @@ public abstract class Packet implements Comparable<Packet> {
         }
         return str;
     }
-    
+
     public String toString(boolean simplified) {
         String str = dateTime.toString();
         str += " " + opcode;
@@ -50,14 +50,14 @@ public abstract class Packet implements Comparable<Packet> {
         this.dateTime = localDateTime;
         //System.out.println("Time: " + dateTime + "HH: " + dateTime.getHour() + "mm: " + dateTime.getMinute() + "ss: " + dateTime.getSecond() + "SSS: " + dateTime.getNano());
     }
-    
+
     @Override
     public int compareTo(Packet o) {
         if (getDateTime() == null || o.getDateTime() == null)
             return 0;
         return getDateTime().compareTo(o.getDateTime());
     }
-    
+
     public String getOpcode() {
         return opcode;
     }

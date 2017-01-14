@@ -15,7 +15,7 @@ public class AuraUpdatePacket extends Packet {
     public AuraUpdatePacket() {
         super.setOpcode("SMSG_AURA_UPDATE");
     }
-    
+
     @Override
     public void parseInfo(List<String> lines) {
         super.parseDateTime(lines.get(0));

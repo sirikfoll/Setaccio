@@ -14,7 +14,7 @@ public class OutputHandler {
     public static void WriteOutputFile() {
         try{
             PrintWriter writer = new PrintWriter("CastsFiltrados.txt", "UTF-8");
-            
+
             Iterator<String> iter = hmap.keySet().iterator();
             while(iter.hasNext()){
                 String key = iter.next();

@@ -12,7 +12,7 @@ public class KillLogPacket extends Packet {
     public KillLogPacket() {
         super.setOpcode("SMSG_PARTY_KILL_LOG");
     }
-    
+
     /*
     ServerToClient: SMSG_PARTY_KILL_LOG (0x2798) Length: 24 ConnIdx: 1 Time: 12/26/2016 07:02:29.102 Number: 56912
     PlayerGUID: Full: 0x083220000000000000000000074A135A Player/0 R3208/S0 Map: 0 (Eastern Kingdoms) Low: 122295130

@@ -19,7 +19,7 @@ public class AiReactionPacket extends Packet {
         super.toString();
         return " " + status;
     }
-    
+
     @Override
     public String toString(boolean simplified) {
         return this.toString();

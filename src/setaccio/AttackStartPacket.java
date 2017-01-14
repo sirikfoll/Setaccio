@@ -9,22 +9,22 @@ import static setaccio.Tools.ExtractUnit;
  */
 public class AttackStartPacket extends Packet {
     private Unit target;
-    
+
     public AttackStartPacket() {
         super.setOpcode("SMSG_ATTACK_START");
     }
-    
+
     @Override
     public String toString() {
         super.toString();
         return " Target: " + target.getName() + " " + target.getEntry();
     }
-    
+
     @Override
     public String toString(boolean simplified) {
         return this.toString();
     }
-    
+
     @Override
     public void parseInfo(List<String> lines) {
         super.setOwner(ExtractUnit(lines.get(1)));

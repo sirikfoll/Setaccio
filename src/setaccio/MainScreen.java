@@ -96,7 +96,7 @@ public class MainScreen extends javax.swing.JFrame {
         fc.setFileFilter(fter);
         fc.setDialogTitle("Escolha o arquivo");
         int resposta = fc.showOpenDialog(null);
-        
+
         if (resposta == JFileChooser.APPROVE_OPTION) {
             FILE_NAME = fc.getSelectedFile().getAbsolutePath();
             jLabelLoadedFile.setText(FILE_NAME);
