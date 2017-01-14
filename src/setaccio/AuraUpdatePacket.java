@@ -18,6 +18,7 @@ public class AuraUpdatePacket extends Packet {
     
     @Override
     public void parseInfo(List<String> lines) {
+        super.parseDateTime(lines.get(0));
         String[] words=lines.get(1).split("\\s+");
         if(!words[0].equals("GUID:") || !words[1].equals("Full:") || !words[3].equals("Type:"))
             return;

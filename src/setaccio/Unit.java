@@ -19,7 +19,7 @@ public class Unit {
         this.guid = "-1";
     }
 
-    List getPacketByType(String type) {
+    List getPacketsByType(String type) {
         List<Packet> tmpPackets = new ArrayList<>();
         for (Packet p : packetList) {
             if (p.getOpcode().equals(type))

@@ -18,9 +18,9 @@ public class KillLogPacket extends Packet {
     PlayerGUID: Full: 0x083220000000000000000000074A135A Player/0 R3208/S0 Map: 0 (Eastern Kingdoms) Low: 122295130
     VictimGUID: Full: 0x202F3C428010DB40004427000060DBBC Unit/0 R3023/S17447 Map: 532 (Karazhan) Entry: 17261 (Restless Skeleton) Low: 6347708
     */
-    
     @Override
     public void parseInfo(List<String> lines) {
-        setOwner(ExtractUnit(lines.get(1)));
+        super.setOwner(ExtractUnit(lines.get(2)));
+        super.parseDateTime(lines.get(0));
     }
 }

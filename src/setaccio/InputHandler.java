@@ -63,16 +63,16 @@ public class InputHandler {
                         packet = new SpellStartPacket();
                         break;
                     case "SMSG_SPELL_GO":
-                        //packet = new SpellGoPacket();
+                        packet = new SpellGoPacket();
                         break;
                     case "SMSG_ATTACK_START":
-                        //packet = new AttackStartPacket();
+                        packet = new AttackStartPacket();
                         break;
                     case "SMSG_AI_REACTION":
-                        //packet = new AiReactionPacket();
+                        packet = new AiReactionPacket();
                         break;
                     case "SMSG_PARTY_KILL_LOG":
-                        //packet = new KillLogPacket();
+                        packet = new KillLogPacket();
                         break;
                     default:
                         break;
@@ -80,19 +80,28 @@ public class InputHandler {
 
                 if (packet != null) {
                     //Loop till the packet ends
-                    while (!linha.isEmpty()) {
+                    while (linha != null && !linha.isEmpty()) {
                         //acumular
                         list.add(linha);
                         linha = br.readLine();
                     }
-                    
+
                     packet.parseInfo(list);
                     list.clear();
 
-                    if (hmap.containsKey(packet.getOwner().getGuid()))
+                    if (hmap.containsKey(packet.getOwner().getGuid())) {
                         hmap.get(packet.getOwner().getGuid()).addPacket(packet);
+                        System.out.println("Contains: " + packet.getOwner().getGuid() + " Opcode: " + packet.getOpcode()
+                        + "" + packet.getOwner().getPacketsByType(opcode));
+                    }
                     else {
+                        packet.getOwner().addPacket(packet);
                         hmap.put(packet.getOwner().getGuid(), packet.getOwner());
+                    }
+                    
+                    List<Packet> l = packet.getOwner().getPacketList();
+                    for (Packet p : l) {
+                        System.out.println("Packet: " + p.getOpcode() + " Owner: " + p.getOwner().getGuid() + " Entry: " + p.getOwner().getEntry() + " Nome: " + p.getOwner().getName());
                     }
                 }
                 linha = FindFirstPacketLine(br);
@@ -104,19 +113,25 @@ public class InputHandler {
             while (it.hasNext()) {
                 Map.Entry pair = (Map.Entry)it.next();
                 Unit u = (Unit)pair.getValue();
-                System.out.println("Guid: " + pair.getKey() + " Type: " + u.getType() + " Name: " + u.getName() + " Entry: " + u.getEntry());
+                if (u != null) {
+                System.out.println("Founded.");
+                List<Packet> l = u.getPacketList();
+                for (Packet p : l) {
+                    System.out.println("Packet: " + p.getOpcode() + " Owner: " + p.getOwner().getGuid() + " Entry: " + p.getOwner().getEntry() + " Nome: " + p.getOwner().getName());
+                }
+            }
+                //System.out.println("Guid: " + pair.getKey() + " Type: " + u.getType() + " Name: " + u.getName() + " Entry: " + u.getEntry());
                 it.remove();
             }
-            */
             Unit u = hmap.get("0x202F3C428010D240004427000060D812");
             if (u != null) {
                 System.out.println("Founded.");
-                List<Packet> l = u.getPacketByType("SMSG_SPELL_START");
+                List<Packet> l = u.getPacketList();
                 for (Packet p : l) {
-                    SpellStartPacket pp = (SpellStartPacket)p;
-                    System.out.println("SpellId: " + pp.getSpellId() + " SpellName: " + pp.getSpellName());
+                    System.out.println("Packet: " + p.getOpcode() + " Owner: " + p.getOwner().getGuid() + " Entry: " + p.getOwner().getEntry() + " Nome: " + p.getOwner().getName());
                 }
             }
+            */
             System.out.println("----------------------FIM-----------------------------");
             //WriteOutputFile();
         } catch(IOException ex) {

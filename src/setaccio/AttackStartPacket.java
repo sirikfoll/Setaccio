@@ -8,7 +8,6 @@ import static setaccio.Tools.ExtractUnit;
  * @author Gustavo Soares <gustavosc_17@hotmail.com>
  */
 public class AttackStartPacket extends Packet {
-    private Unit attacker;
     private Unit target;
     
     public AttackStartPacket() {
@@ -16,17 +15,21 @@ public class AttackStartPacket extends Packet {
     }
     
     @Override
+    public String toString() {
+        super.toString();
+        return " Target: " + target.getName() + " " + target.getEntry();
+    }
+    
+    @Override
+    public String toString(boolean simplified) {
+        return this.toString();
+    }
+    
+    @Override
     public void parseInfo(List<String> lines) {
-        this.attacker = ExtractUnit(lines.get(1));
+        super.setOwner(ExtractUnit(lines.get(1)));
+        super.parseDateTime(lines.get(0));
         this.target = ExtractUnit(lines.get(2));
-    }
-
-    public Unit getAttacker() {
-        return attacker;
-    }
-
-    public void setAttacker(Unit attacker) {
-        this.attacker = attacker;
     }
 
     public Unit getTarget() {

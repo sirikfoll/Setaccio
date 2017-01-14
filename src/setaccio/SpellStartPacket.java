@@ -23,6 +23,7 @@ public class SpellStartPacket extends Packet {
     public void parseInfo(List<String> lines) {
         caster = ExtractUnit(lines.get(1));
         super.setOwner(caster);
+        super.parseDateTime(lines.get(0));
 
         String[] spellInfo = parseSpellInfo(lines.get(5));
         if (!spellInfo[0].contains("(")) {
