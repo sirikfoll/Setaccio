@@ -48,7 +48,7 @@ public abstract class Packet implements Comparable<Packet> {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss.SSS");
         LocalDateTime localDateTime = LocalDateTime.parse(date, formatter);
         this.dateTime = localDateTime;
-        System.out.println("Time: " + dateTime + "HH: " + dateTime.getHour() + "mm: " + dateTime.getMinute() + "ss: " + dateTime.getSecond() + "SSS: " + dateTime.getNano());
+        //System.out.println("Time: " + dateTime + "HH: " + dateTime.getHour() + "mm: " + dateTime.getMinute() + "ss: " + dateTime.getSecond() + "SSS: " + dateTime.getNano());
     }
     
     @Override

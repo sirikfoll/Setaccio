@@ -72,6 +72,8 @@ public class Tools {
         Unit unit = new Unit();
 
         if (!type.equals("Player")) {
+            if (words.length <= 6)
+                System.out.println("-----------------------CRASH------------------------" + line);
             if (words.length <= 8)
                 entry = words[6];
             else

@@ -1,6 +1,7 @@
 package setaccio;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -17,6 +18,15 @@ public class Unit {
     public Unit() {
         this.entry = "-1";
         this.guid = "-1";
+    }
+
+    public void sortAllPackets() {
+        Collections.sort(packetList);
+    }
+
+    public void printAllPackets() {
+        for (Packet p : packetList)
+            System.out.println(p.toString());
     }
 
     List getPacketsByType(String type) {

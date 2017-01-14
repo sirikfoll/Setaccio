@@ -91,23 +91,25 @@ public class InputHandler {
 
                     if (hmap.containsKey(packet.getOwner().getGuid())) {
                         hmap.get(packet.getOwner().getGuid()).addPacket(packet);
-                        System.out.println("Contains: " + packet.getOwner().getGuid() + " Opcode: " + packet.getOpcode()
-                        + "" + packet.getOwner().getPacketsByType(opcode));
                     }
                     else {
                         packet.getOwner().addPacket(packet);
                         hmap.put(packet.getOwner().getGuid(), packet.getOwner());
                     }
                     
-                    List<Packet> l = packet.getOwner().getPacketList();
-                    for (Packet p : l) {
-                        System.out.println("Packet: " + p.getOpcode() + " Owner: " + p.getOwner().getGuid() + " Entry: " + p.getOwner().getEntry() + " Nome: " + p.getOwner().getName());
-                    }
+                    //List<Packet> l = packet.getOwner().getPacketList();
+                    //for (Packet p : l) {
+                    //    System.out.println("Packet: " + p.getOpcode() + " Owner: " + p.getOwner().getGuid() + " Entry: " + p.getOwner().getEntry() + " Nome: " + p.getOwner().getName());
+                    //}
                 }
                 linha = FindFirstPacketLine(br);
             }
             br.close();
 
+            for (Map.Entry<String, Unit> entry : hmap.entrySet())
+            {
+                entry.getValue().printAllPackets();
+            }
             /*
             Iterator it = hmap.entrySet().iterator();
             while (it.hasNext()) {

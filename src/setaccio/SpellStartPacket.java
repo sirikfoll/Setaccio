@@ -41,7 +41,7 @@ public class SpellStartPacket extends Packet {
             target = this.caster;
         }
         else if(targetFlags == 2){
-            target = ExtractUnit(lines.get(index + 1));
+            target = ExtractUnit(lines.get(getLineIndexThatContainsPrefix(lines, "(Cast) (Target) Unit: Full:")));
         }
         /*
         (Cast) (Target) Name: 
