@@ -1,6 +1,8 @@
-package setaccio;
+package Packets;
 
 import java.util.List;
+import setaccio.Packet;
+import setaccio.Unit;
 import static setaccio.Tools.ExtractUnit;
 
 /**
@@ -16,8 +18,7 @@ public class AttackStartPacket extends Packet {
 
     @Override
     public String toString() {
-        super.toString();
-        return " Target: " + target.getName() + " " + target.getEntry();
+        return super.toString() + " Target: " + target.getName() + " " + target.getEntry();
     }
 
     @Override

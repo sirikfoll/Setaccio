@@ -60,15 +60,15 @@ public class Tools {
      * @return Unit
      */
     public static Unit ExtractUnit(String line) {
-        line = line.replaceFirst(".*" + Pattern.quote("Full:") + ":?", "").trim();
+        line = line.replaceFirst(".*" + Pattern.quote("Full:"), "").trim();
 
-        if (line.equals("0x0"))
+        if (line.equals("0x0") || line.equals(" 0x0"))
             return null;
 
         String[] words=line.split("\\s+");
         String type = words[1].replace("/0", "");
-        String entry = null;
-        String name = null;
+        String entry = "";
+        String name = "Player";
         Unit unit = new Unit();
 
         if (!type.equals("Player")) {
@@ -78,23 +78,19 @@ public class Tools {
                 entry = words[6];
             else
                 entry = words[7];
+            
+            if (words.length > 10) {
+                int start = line.indexOf("(", line.indexOf("Entry")) + 1;
+                int end = line.indexOf("Low") - 2;
+                name = line.substring(start, end);
+            }
         }
 
-        if (words.length > 10) {
-            int start = line.indexOf("(", line.indexOf("Entry")) + 1;
-            int end = line.indexOf("Low") - 2;
-            name = line.substring(start, end);
-        }
         unit.setGuid(words[0]);
         unit.setEntry(entry);
         unit.setType(type);
         unit.setName(name);
         return unit;
-    }
-
-    public static String[] parseSpellInfo(String line) {
-        line = line.replaceFirst(".*" + Pattern.quote("SpellID") + ":?", "").trim();
-        return line.split(" ");
     }
 
     public static int getLineIndexThatContainsPrefix(List<String> lines, String prefix) {

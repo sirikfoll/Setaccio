@@ -21,7 +21,7 @@ public abstract class Packet implements Comparable<Packet> {
 
     @Override
     public String toString() {
-        String str = dateTime.toString();
+        String str = dateTime.getHour() + ":" + dateTime.getMinute() + ":" + dateTime.getSecond() + ":" + dateTime.getNano();
         str += " " + owner.getGuid();
         str += " " + opcode;
         if (owner.getType().equals("Player")) {
@@ -41,7 +41,6 @@ public abstract class Packet implements Comparable<Packet> {
     }
 
     public void parseDateTime(String line) {
-        System.out.println(line);
         int start = line.indexOf("Time") + 6;
         int end = line.indexOf("Number") - 1;
         String date = line.substring(start, end);

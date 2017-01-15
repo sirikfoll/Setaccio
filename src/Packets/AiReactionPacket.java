@@ -1,6 +1,7 @@
-package setaccio;
+package Packets;
 
 import java.util.List;
+import setaccio.Packet;
 import static setaccio.Tools.ExtractUnit;
 
 /**
@@ -16,8 +17,7 @@ public class AiReactionPacket extends Packet {
 
     @Override
     public String toString() {
-        super.toString();
-        return " " + status;
+        return super.toString() + " " + status;
     }
 
     @Override

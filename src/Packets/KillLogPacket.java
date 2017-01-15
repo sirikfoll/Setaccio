@@ -1,6 +1,7 @@
-package setaccio;
+package Packets;
 
 import java.util.List;
+import setaccio.Packet;
 import static setaccio.Tools.ExtractUnit;
 
 /**

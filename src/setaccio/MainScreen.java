@@ -6,7 +6,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import static setaccio.InputHandler.DoFilterFile;
-import static setaccio.InputHandler.hmap;
+import static setaccio.OutputHandler.WriteOutputFile;
 
 /**
  *
@@ -14,9 +14,12 @@ import static setaccio.InputHandler.hmap;
  */
 public class MainScreen extends javax.swing.JFrame {
 
+    Filter filter;
     public static String FILE_NAME;
     public MainScreen() {
         initComponents();
+        jListSpells.setVisible(false);
+        filter = new Filter();
     }
 
     @SuppressWarnings("unchecked")
@@ -43,42 +46,45 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonSelectFile);
-        jButtonSelectFile.setBounds(10, 11, 137, 23);
+        jButtonSelectFile.setBounds(10, 11, 137, 30);
 
-        jComboBoxSelectPacketType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar Packets", "SMSG_SPELL_START", "SMSG_SPELL_GO" }));
+        jComboBoxSelectPacketType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar Packets", "SMSG_SPELL_START", "SMSG_SPELL_GO", "SMSG_ATTACK_START", "SMSG_AI_REACTION", "SMSG_PARTY_KILL_LOG" }));
+        jComboBoxSelectPacketType.setEnabled(false);
         getContentPane().add(jComboBoxSelectPacketType);
-        jComboBoxSelectPacketType.setBounds(10, 40, 137, 20);
+        jComboBoxSelectPacketType.setBounds(10, 50, 190, 30);
 
         jListSpells.setEnabled(false);
         jScrollPane1.setViewportView(jListSpells);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(165, 11, 101, 130);
+        jScrollPane1.setBounds(220, 40, 170, 150);
 
         jLabelLoadedFile.setText("Nenhum arquivo carregado.");
         getContentPane().add(jLabelLoadedFile);
-        jLabelLoadedFile.setBounds(39, 213, 322, 23);
+        jLabelLoadedFile.setBounds(160, 10, 322, 23);
 
         jButtonFilter.setText("Filtrar");
+        jButtonFilter.setEnabled(false);
         jButtonFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonFilterActionPerformed(evt);
             }
         });
         getContentPane().add(jButtonFilter);
-        jButtonFilter.setBounds(52, 146, 61, 23);
+        jButtonFilter.setBounds(60, 150, 80, 30);
 
+        jTextFieldNpcEntry.setEnabled(false);
         jTextFieldNpcEntry.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldNpcEntryKeyTyped(evt);
             }
         });
         getContentPane().add(jTextFieldNpcEntry);
-        jTextFieldNpcEntry.setBounds(65, 78, 82, 20);
+        jTextFieldNpcEntry.setBounds(90, 90, 100, 30);
 
         jLabel1.setText("Npc Entry:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(10, 81, 51, 14);
+        jLabel1.setBounds(10, 100, 70, 14);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundoMadeira.jpg"))); // NOI18N
@@ -101,22 +107,27 @@ public class MainScreen extends javax.swing.JFrame {
             FILE_NAME = fc.getSelectedFile().getAbsolutePath();
             jLabelLoadedFile.setText(FILE_NAME);
         }
+        
+         if (FILE_NAME == null || FILE_NAME.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Falha ao carregar arquivo.");
+            return;
+        }
+        
+        DoFilterFile(FILE_NAME);
+        jComboBoxSelectPacketType.setEnabled(true);
+        jTextFieldNpcEntry.setEnabled(true);
+        jButtonFilter.setEnabled(true);
     }//GEN-LAST:event_jButtonSelectFileActionPerformed
 
     private void jButtonFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFilterActionPerformed
-        if (FILE_NAME == null || FILE_NAME.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Carregue um arquivo antes.");
-            return;
+        if (!jTextFieldNpcEntry.getText().isEmpty()) {
+            filter.FilterByEntry(jTextFieldNpcEntry.getText());
+            //JOptionPane.showMessageDialog(null, "Selecione o npc.");
         }
-        if (jComboBoxSelectPacketType.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(null, "Selecione o tipo de packet a filtrar.");
-            return;
+        if (jComboBoxSelectPacketType.getSelectedIndex() != 0) {
+            filter.FilterByPacket(jComboBoxSelectPacketType.getSelectedItem().toString());
+            //JOptionPane.showMessageDialog(null, "Selecione o tipo de packet a filtrar.");
         }
-        if (jTextFieldNpcEntry.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Selecione o npc.");
-            return;
-        }
-        DoFilterFile(FILE_NAME, jComboBoxSelectPacketType.getSelectedItem().toString(), jTextFieldNpcEntry.getText());
         DefaultListModel listModel = new DefaultListModel();
         HashSet<String> spells = new HashSet<>();
         //if (hmap.containsKey(jTextFieldNpcEntry.getText()))
@@ -125,6 +136,8 @@ public class MainScreen extends javax.swing.JFrame {
             listModel.addElement(spId);
         jListSpells.setModel(listModel);
         jListSpells.setEnabled(true);
+        
+        WriteOutputFile();
     }//GEN-LAST:event_jButtonFilterActionPerformed
 
     private void jTextFieldNpcEntryKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNpcEntryKeyTyped
