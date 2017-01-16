@@ -1,7 +1,10 @@
 package setaccio;
 
+import Packets.SpellGoPacket;
+import Packets.SpellStartPacket;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
@@ -61,6 +64,16 @@ public class Unit {
         }
     }
 
+    HashSet getUniqueCasts() {
+        HashSet<String> spells = new HashSet<>();
+        for (Packet p : packetList) {
+            if (p.getOpcode().equals("SMSG_SPELL_GO"))
+                spells.add(((SpellGoPacket)p).getSpellId() + " " + ((SpellGoPacket)p).getSpellName());
+            else if (p.getOpcode().equals("SMSG_SPELL_START"))
+                spells.add(((SpellStartPacket)p).getSpellId() + " " + ((SpellStartPacket)p).getSpellName());
+        }
+        return spells;
+    }
     public String getEntry() {
         return entry;
     }

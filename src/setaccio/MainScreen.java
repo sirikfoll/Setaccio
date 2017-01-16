@@ -6,6 +6,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import static setaccio.InputHandler.DoFilterFile;
+import static setaccio.InputHandler.hmap;
 import static setaccio.OutputHandler.WriteOutputFile;
 
 /**
@@ -57,7 +58,7 @@ public class MainScreen extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jListSpells);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(220, 40, 170, 150);
+        jScrollPane1.setBounds(220, 40, 250, 490);
 
         jLabelLoadedFile.setText("Nenhum arquivo carregado.");
         getContentPane().add(jLabelLoadedFile);
@@ -130,13 +131,18 @@ public class MainScreen extends javax.swing.JFrame {
         }
         DefaultListModel listModel = new DefaultListModel();
         HashSet<String> spells = new HashSet<>();
-        //if (hmap.containsKey(jTextFieldNpcEntry.getText()))
-        //    spells = hmap.get(jTextFieldNpcEntry.getText()).getUniqueCasts();
+        for (Unit u : Filter.filteredInfo) {
+            if (u.getEntry().equals(jTextFieldNpcEntry.getText())) {
+                spells = u.getUniqueCasts();
+                break;
+            }
+        }
         for (String spId : spells)
             listModel.addElement(spId);
         jListSpells.setModel(listModel);
+        jListSpells.setVisible(true);
         jListSpells.setEnabled(true);
-        
+
         WriteOutputFile();
     }//GEN-LAST:event_jButtonFilterActionPerformed
 
