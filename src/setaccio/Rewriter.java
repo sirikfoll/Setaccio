@@ -17,7 +17,7 @@ import static setaccio.InputHandler.FindFirstPacketLine;
  * @author Gustavo Soares <gustavosc_17@hotmail.com>
  */
 public class Rewriter {
-    private List<String> list = new LinkedList<>();
+    private List<String> list = new ArrayList<>();
 
     public void removeLineFromFile(String file, String lineToRemove) {
  
@@ -27,7 +27,7 @@ public class Rewriter {
                 System.out.println("Parameter is not an existing file");
                 return;
             }
-            File tempFile = new File(inFile.getAbsolutePath() + "_Parsed.txt");
+            File tempFile = new File(inFile.getAbsolutePath() + ".txt");
             BufferedReader br = new BufferedReader(new FileReader(file));
             PrintWriter pw = new PrintWriter(new FileWriter(tempFile));
             
@@ -36,12 +36,15 @@ public class Rewriter {
             line = FindFirstPacketLine(line, br);
             while (line != null && !line.isEmpty()) {
                 while (line != null && !line.isEmpty()) {
-                    list.add(line + "\n");
+                    list.add(line);
                     line = br.readLine();
                 }
                 if (list.size() > 1 && (tmpLine = list.get(1)) != null && !tmpLine.contains("Entry: " + lineToRemove)) {
-                    pw.println(list);
-                    pw.flush();
+                    for (String s : list) {
+                        pw.println(s);
+                        pw.flush();
+                    }
+                    pw.println();
                 }
                 list.clear();
                 line = FindFirstPacketLine(line, br);
@@ -54,8 +57,8 @@ public class Rewriter {
                 return;
             }
 
-            //if (!tempFile.renameTo(inFile))
-            //System.out.println("Could not rename file");
+            if (!tempFile.renameTo(inFile))
+            System.out.println("Could not rename file");
 
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
