@@ -47,6 +47,8 @@ public class InputHandler {
             linha = FindFirstPacketLine(linha, br);
             while (linha != null && !linha.isEmpty())
             {
+                if (linha.split(" ").length < 2)
+                    System.out.println(linha);
                 String opcode = (linha.split(" "))[1];
                 Packet packet = null;
                 switch(opcode) {

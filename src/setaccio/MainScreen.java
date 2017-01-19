@@ -34,8 +34,12 @@ public class MainScreen extends javax.swing.JFrame {
         jLabelLoadedFile = new javax.swing.JLabel();
         jButtonFilter = new javax.swing.JButton();
         jTextFieldNpcEntry = new javax.swing.JTextField();
+        jTextFieldEntryRemover = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabelFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -82,16 +86,35 @@ public class MainScreen extends javax.swing.JFrame {
         });
         getContentPane().add(jTextFieldNpcEntry);
         jTextFieldNpcEntry.setBounds(90, 90, 100, 30);
+        getContentPane().add(jTextFieldEntryRemover);
+        jTextFieldEntryRemover.setBounds(790, 100, 120, 30);
+
+        jLabel3.setText("Entry:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(740, 110, 34, 14);
 
         jLabel1.setText("Npc Entry:");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(10, 100, 70, 14);
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundoMadeira.jpg"))); // NOI18N
-        jLabel2.setText("jLabel2");
+        jLabel2.setText("Remover Dados do Sniff");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 1010, 550);
+        jLabel2.setBounds(770, 30, 140, 14);
+
+        jButton1.setText("Apagar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(810, 170, 90, 40);
+
+        jLabelFundo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundoMadeira.jpg"))); // NOI18N
+        jLabelFundo.setText("jLabel2");
+        getContentPane().add(jLabelFundo);
+        jLabelFundo.setBounds(0, 0, 1010, 550);
 
         setSize(new java.awt.Dimension(1026, 586));
         setLocationRelativeTo(null);
@@ -153,6 +176,15 @@ public class MainScreen extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextFieldNpcEntryKeyTyped
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (jTextFieldEntryRemover.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Selecione alguma entry para apagar.");
+            return;
+        }
+        Rewriter rw = new Rewriter();
+        rw.removeLineFromFile(FILE_NAME, jTextFieldEntryRemover.getText());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -180,14 +212,18 @@ public class MainScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonFilter;
     private javax.swing.JButton jButtonSelectFile;
     private javax.swing.JComboBox<String> jComboBoxSelectPacketType;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelFundo;
     private javax.swing.JLabel jLabelLoadedFile;
     private javax.swing.JList<String> jListSpells;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextFieldEntryRemover;
     private javax.swing.JTextField jTextFieldNpcEntry;
     // End of variables declaration//GEN-END:variables
 }
