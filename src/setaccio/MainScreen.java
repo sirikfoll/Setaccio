@@ -38,7 +38,7 @@ public class MainScreen extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonApagar = new javax.swing.JButton();
         jLabelFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,6 +86,8 @@ public class MainScreen extends javax.swing.JFrame {
         });
         getContentPane().add(jTextFieldNpcEntry);
         jTextFieldNpcEntry.setBounds(90, 90, 100, 30);
+
+        jTextFieldEntryRemover.setEnabled(false);
         getContentPane().add(jTextFieldEntryRemover);
         jTextFieldEntryRemover.setBounds(790, 100, 120, 30);
 
@@ -101,14 +103,15 @@ public class MainScreen extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(770, 30, 140, 14);
 
-        jButton1.setText("Apagar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonApagar.setText("Apagar");
+        jButtonApagar.setEnabled(false);
+        jButtonApagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonApagarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(810, 170, 90, 40);
+        getContentPane().add(jButtonApagar);
+        jButtonApagar.setBounds(810, 170, 90, 40);
 
         jLabelFundo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundoMadeira.jpg"))); // NOI18N
@@ -141,6 +144,8 @@ public class MainScreen extends javax.swing.JFrame {
         jComboBoxSelectPacketType.setEnabled(true);
         jTextFieldNpcEntry.setEnabled(true);
         jButtonFilter.setEnabled(true);
+        jTextFieldEntryRemover.setEnabled(true);
+        jButtonApagar.setEnabled(true);
     }//GEN-LAST:event_jButtonSelectFileActionPerformed
 
     private void jButtonFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFilterActionPerformed
@@ -176,14 +181,14 @@ public class MainScreen extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextFieldNpcEntryKeyTyped
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonApagarActionPerformed
         if (jTextFieldEntryRemover.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Selecione alguma entry para apagar.");
             return;
         }
         Rewriter rw = new Rewriter();
         rw.removeLineFromFile(FILE_NAME, jTextFieldEntryRemover.getText());
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonApagarActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -212,7 +217,7 @@ public class MainScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonApagar;
     private javax.swing.JButton jButtonFilter;
     private javax.swing.JButton jButtonSelectFile;
     private javax.swing.JComboBox<String> jComboBoxSelectPacketType;
