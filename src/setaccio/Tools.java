@@ -71,9 +71,9 @@ public class Tools {
         String name = "Player";
         Unit unit = new Unit();
 
-        if (!type.equals("Player")) {
+        if (type.equals("Creature") || type.equals("GameObject")) {
             if (words.length <= 6)
-                System.out.println("-----------------------CRASH------------------------" + line);
+                System.out.println("-----------------------CRASH------------------------" + line + " " + type);
             if (words.length <= 8)
                 entry = words[6];
             else

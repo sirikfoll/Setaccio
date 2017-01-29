@@ -5,7 +5,9 @@ import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import static setaccio.Filter.filteredInfo;
 import static setaccio.InputHandler.DoFilterFile;
+import static setaccio.InputHandler.DoResetDataStores;
 import static setaccio.InputHandler.hmap;
 import static setaccio.OutputHandler.WriteOutputFile;
 
@@ -124,6 +126,7 @@ public class MainScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSelectFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelectFileActionPerformed
+        DoResetDataStores();
         FileNameExtensionFilter fter = new FileNameExtensionFilter(".txt", "txt");
         JFileChooser fc = new JFileChooser();
         fc.setFileFilter(fter);
@@ -149,6 +152,8 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSelectFileActionPerformed
 
     private void jButtonFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFilterActionPerformed
+        filteredInfo.clear();
+
         if (!jTextFieldNpcEntry.getText().isEmpty()) {
             filter.FilterByEntry(jTextFieldNpcEntry.getText());
             //JOptionPane.showMessageDialog(null, "Selecione o npc.");

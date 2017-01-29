@@ -40,8 +40,14 @@ public class SpellGoPacket extends Packet {
         super.setOwner(caster);
         super.parseDateTime(lines.get(0));
 
-        String spellInfo = lines.get(5).replaceFirst(".*" + Pattern.quote("SpellID") + ":?", "").trim();
-        int start = spellInfo.indexOf("(") + 1;
+        String spellInfo = "";
+        for (String s : lines)
+            if (s.contains("SpellID")) {
+                spellInfo = s.replaceFirst(".*" + Pattern.quote("SpellID") + ":?", "").trim();
+                break;
+            }
+
+        int start = spellInfo.lastIndexOf("(") + 1;
         this.spellId = spellInfo.substring(start, spellInfo.length() - 1);
         this.spellName = spellInfo.replaceFirst(Pattern.quote("(") + ".*", "").trim();
         //this.spellId = spellInfo[0].replaceAll("\\p{Punct}", "");

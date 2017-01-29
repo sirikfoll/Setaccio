@@ -21,22 +21,30 @@ public class InputHandler {
     public static HashMap<String, Unit> hmap = new HashMap<>();
     public static List<String> list = new ArrayList<>();
 
-    public static String FindFirstPacketLine(String lines, BufferedReader br) {
+    public static void DoResetDataStores() {
+        hmap.clear();
+        list.clear();
+    }
+
+    public static String FindFirstPacketLine(String line, BufferedReader br) {
         try {
-            while (lines != null) {
-                if (lines.isEmpty()) {
-                    while (lines != null && lines.isEmpty())
-                        lines = br.readLine();
-                    return lines;
-                }
-                lines = br.readLine();
+            line = br.readLine();
+            while (line != null) {
+                if (IsPacket(line))
+                    return line;
+                line = br.readLine();
             }
-            lines = br.readLine();
-            return lines;
+            return null;
         } catch (IOException ex) {
             System.out.println("Failed to find next packet.");
         }
         return null;
+    }
+
+    private static boolean IsPacket(String line) {
+        if (line != null && (line.contains("ServerToClient") || line.contains("ClientToServer")))
+            return true;
+        return false;
     }
 
     public static void DoFilterFile(String nomeArq) {
@@ -45,10 +53,11 @@ public class InputHandler {
             BufferedReader br = new BufferedReader(file);
             String linha = "";
             linha = FindFirstPacketLine(linha, br);
+
             while (linha != null && !linha.isEmpty())
             {
                 if (linha.split(" ").length < 2)
-                    System.out.println(linha);
+                    System.out.println("Crash split Opcode: " + linha);
                 String opcode = (linha.split(" "))[1];
                 Packet packet = null;
                 switch(opcode) {
@@ -94,7 +103,6 @@ public class InputHandler {
                     }
                 }
                 linha = FindFirstPacketLine(linha, br);
-                //linha = br.readLine();
             }
             br.close();
 
