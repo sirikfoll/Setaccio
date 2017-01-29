@@ -8,7 +8,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import static setaccio.Filter.filteredInfo;
 import static setaccio.InputHandler.DoFilterFile;
 import static setaccio.InputHandler.DoResetDataStores;
-import static setaccio.InputHandler.hmap;
 import static setaccio.OutputHandler.WriteOutputFile;
 
 /**
@@ -125,7 +124,24 @@ public class MainScreen extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void LockFields() {
+        jComboBoxSelectPacketType.setEnabled(false);
+        jTextFieldNpcEntry.setEnabled(false);
+        jButtonFilter.setEnabled(false);
+        jTextFieldEntryRemover.setEnabled(false);
+        jButtonApagar.setEnabled(false);
+    }
+
+    private void UnlockFields() {
+        jComboBoxSelectPacketType.setEnabled(true);
+        jTextFieldNpcEntry.setEnabled(true);
+        jButtonFilter.setEnabled(true);
+        jTextFieldEntryRemover.setEnabled(true);
+        jButtonApagar.setEnabled(true);
+    }
+
     private void jButtonSelectFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelectFileActionPerformed
+        LockFields();
         DoResetDataStores();
         FileNameExtensionFilter fter = new FileNameExtensionFilter(".txt", "txt");
         JFileChooser fc = new JFileChooser();
@@ -144,11 +160,7 @@ public class MainScreen extends javax.swing.JFrame {
         }
         
         DoFilterFile(FILE_NAME);
-        jComboBoxSelectPacketType.setEnabled(true);
-        jTextFieldNpcEntry.setEnabled(true);
-        jButtonFilter.setEnabled(true);
-        jTextFieldEntryRemover.setEnabled(true);
-        jButtonApagar.setEnabled(true);
+        UnlockFields();
     }//GEN-LAST:event_jButtonSelectFileActionPerformed
 
     private void jButtonFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFilterActionPerformed

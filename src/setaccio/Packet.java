@@ -1,7 +1,10 @@
 package setaccio;
 
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Formatter;
 import java.util.List;
 
 /**
@@ -21,7 +24,9 @@ public abstract class Packet implements Comparable<Packet> {
 
     @Override
     public String toString() {
-        String str = dateTime.getHour() + ":" + dateTime.getMinute() + ":" + dateTime.getSecond() + ":" + dateTime.getNano();
+        String str = "";
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss.SSS");
+        str += dateTimeFormatter.format(dateTime);
         str += " " + owner.getGuid();
         str += " " + opcode;
         if (owner.getType().equals("Player")) {
