@@ -33,17 +33,24 @@ public class SpellStartPacket extends Packet {
         super.parseDateTime(lines.get(0));
 
         String spellInfo = "";
-        for (String s : lines)
+        for (String s : lines) {
             if (s.contains("SpellID")) {
                 spellInfo = s.replaceFirst(".*" + Pattern.quote("SpellID") + ":?", "").trim();
                 break;
             }
+            if (s.contains("Spell ID")) {
+                spellInfo = s.replaceFirst(".*" + Pattern.quote("Spell ID") + ":?", "").trim();
+                break;
+            }
+        }
 
         int start = spellInfo.lastIndexOf("(") + 1;
         this.spellId = spellInfo.substring(start, spellInfo.length() - 1);
         this.spellName = spellInfo.replaceFirst(Pattern.quote("(") + ".*", "").trim();
 
         Integer index = getLineIndexThatContainsPrefix(lines, "(Target) Flags:");
+        if (index == 0)
+            index = getLineIndexThatContainsPrefix(lines, "Target Flags:");
         String[] split = lines.get(index).split("\\s+");
         String targetFlagsString = split[split.length - 1].replace('(', ' ').replace(')', ' ').trim();
         targetFlags=Integer.valueOf(targetFlagsString);

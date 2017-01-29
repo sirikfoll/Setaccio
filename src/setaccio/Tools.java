@@ -56,6 +56,8 @@ public class Tools {
      *          0                            1             2         3   4     5     6    7      8
      * 0x2C3CB84280BD8B000068DB000060326A GameObject/0 R3886/S26843 Map: 532 Entry: 194092 Low: 6304362
      *          0                            1             2         3   4     5     6    7      8
+     * 0xF13069350094D6A0 Type: Creature Entry: 26933 (Wyrmrest Guardian) Low: 9754272
+     *          0           1       2      3      4             5          6       7
      * @param line
      * @return Unit
      */
@@ -65,26 +67,24 @@ public class Tools {
         if (line.equals("0x0") || line.equals(" 0x0"))
             return null;
 
-        String[] words=line.split("\\s+");
-        String type = words[1].replace("/0", "");
-        String entry = "";
-        String name = "Player";
+        String type = "";
+        String entry = "NoEntry";
+        String name = "Unknown";
         Unit unit = new Unit();
+        String[] words=line.split("\\s+");
+
+        if (line.contains("Type:"))
+            type = words[2];
+        else
+            type = words[1].replace("/0", "");
 
         if (type.equals("Creature") || type.equals("GameObject")) {
-            if (words.length <= 6)
-                System.out.println("-----------------------CRASH------------------------" + line + " " + type);
-            if (words.length <= 8)
-                entry = words[6];
-            else
-                entry = words[7];
-            
-            if (words.length > 10) {
-                int start = line.indexOf("(", line.indexOf("Entry")) + 1;
-                int end = line.indexOf("Low") - 2;
-                name = line.substring(start, end);
-            }
-        }
+            entry = line.substring(line.indexOf("Entry:") + 7, line.indexOf(" ", line.indexOf("Entry:") + 7));
+            int start = line.indexOf("(", line.indexOf("Entry")) + 1;
+            if (start != 0)
+                name = line.substring(start, line.indexOf("Low") - 2);
+        } else if (type.equals("Player"))
+            name = "Player";
 
         unit.setGuid(words[0]);
         unit.setEntry(entry);

@@ -67,8 +67,10 @@ public class Unit {
     HashSet getUniqueCasts() {
         HashSet<String> spells = new HashSet<>();
         for (Packet p : packetList) {
-            if (p.getOpcode().equals("SMSG_SPELL_GO"))
+            if (p.getOpcode().equals("SMSG_SPELL_GO")) {
                 spells.add(((SpellGoPacket)p).getSpellId() + " " + ((SpellGoPacket)p).getSpellName());
+                System.out.println("Spell: " + ((SpellGoPacket)p).getSpellId());
+            }
             else if (p.getOpcode().equals("SMSG_SPELL_START"))
                 spells.add(((SpellStartPacket)p).getSpellId() + " " + ((SpellStartPacket)p).getSpellName());
         }
