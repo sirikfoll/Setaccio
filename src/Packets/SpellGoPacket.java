@@ -13,6 +13,7 @@ import static setaccio.Tools.*;
 public class SpellGoPacket extends Packet {
     private String spellId;
     private String spellName;
+    private String timeUntilNext;
 
     private Unit caster;
     private Unit target;
@@ -31,7 +32,7 @@ public class SpellGoPacket extends Packet {
             System.out.println("null2");
             return "\n\nspellId";
         }
-        return super.toString() + " Id: " + spellId + " Name: " + spellName + " Caster: " + caster.getName() + " Target: " + target.getName();
+        return super.toString() + " Id: " + spellId + " Name: " + spellName + " Caster: " + caster.getName() + " Target: " + target.getName() + "Next: " + timeUntilNext;
     }
         
     @Override
@@ -104,5 +105,13 @@ public class SpellGoPacket extends Packet {
 
     public void setSpellName(String spellName) {
         this.spellName = spellName;
+    }
+
+    public String getTimeUntilNext() {
+        return timeUntilNext;
+    }
+
+    public void setTimeUntilNext(String timeUntilNext) {
+        this.timeUntilNext = timeUntilNext;
     }
 }

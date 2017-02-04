@@ -1,5 +1,7 @@
 package setaccio;
 
+import Packets.SpellGoPacket;
+import Packets.SpellStartPacket;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,25 +16,31 @@ public class Filter {
     public static List<Unit> filteredInfo = new ArrayList<>();
 
     public List FilterByEntry(String npcEntry) {
-        for (Map.Entry<String,Unit> entry : hmap.entrySet()) {
-            if (entry.getValue().getEntry().equals(npcEntry))
-                filteredInfo.add(entry.getValue());
+            for (Map.Entry<String,Unit> entry : hmap.entrySet()) {
+                if (entry.getValue().getEntry().equals(npcEntry)) {
+                    Unit tmpUnit = new Unit(entry.getValue());
+                    filteredInfo.add(tmpUnit);
+                } else
+                    filteredInfo.remove(entry.getValue());
+            }
+            /*
+        } else {
+            for (Iterator<Unit> it = filteredInfo.iterator(); it.hasNext();) {
+                Unit unit = it.next();
+                if (!unit.getEntry().equals(npcEntry))
+                    it.remove();
+            }
         }
-        //} else {
-        //    for (Iterator<Unit> it = filteredInfo.iterator(); it.hasNext();) {
-        //        Unit unit = it.next();
-        //        if (!unit.getEntry().equals(npcEntry))
-        //            it.remove();
-        //    }
-
+*/
         return filteredInfo;
     }
     
     public List FilterByPacket(String type) {
         for (Map.Entry<String,Unit> entry : hmap.entrySet()) {
             if (entry.getValue().hasPacketType(type)) {
-                entry.getValue().removePacketsExceptType(type);
-                filteredInfo.add(entry.getValue());
+                Unit tmpUnit = new Unit(entry.getValue());
+                tmpUnit.removePacketsExceptType(type);
+                filteredInfo.add(tmpUnit);
             }
         }
         //} else {
@@ -42,9 +50,16 @@ public class Filter {
         //    }
         return filteredInfo;
     }
+    
+    public List FilterBySpell(String spellID) {
+        for (Iterator<Unit> it = filteredInfo.iterator(); it.hasNext();) {
+                Unit unit = it.next();
+                unit.removePacketsExceptSpellID(spellID);
+        }
+        return filteredInfo;
+    }
 
     public List getfilteredInfo() {
         return filteredInfo;
     }
-    
 }

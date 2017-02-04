@@ -40,6 +40,8 @@ public class MainScreen extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButtonApagar = new javax.swing.JButton();
+        jTextFieldSpellID = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         jLabelFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -77,7 +79,7 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonFilter);
-        jButtonFilter.setBounds(60, 150, 80, 30);
+        jButtonFilter.setBounds(60, 170, 80, 30);
 
         jTextFieldNpcEntry.setEnabled(false);
         jTextFieldNpcEntry.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -114,6 +116,19 @@ public class MainScreen extends javax.swing.JFrame {
         getContentPane().add(jButtonApagar);
         jButtonApagar.setBounds(810, 170, 90, 40);
 
+        jTextFieldSpellID.setEnabled(false);
+        jTextFieldSpellID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldSpellIDKeyTyped(evt);
+            }
+        });
+        getContentPane().add(jTextFieldSpellID);
+        jTextFieldSpellID.setBounds(90, 130, 100, 30);
+
+        jLabel4.setText("SpellID:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(20, 140, 50, 14);
+
         jLabelFundo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundoMadeira.jpg"))); // NOI18N
         jLabelFundo.setText("jLabel2");
@@ -130,6 +145,7 @@ public class MainScreen extends javax.swing.JFrame {
         jButtonFilter.setEnabled(false);
         jTextFieldEntryRemover.setEnabled(false);
         jButtonApagar.setEnabled(false);
+        jTextFieldSpellID.setEnabled(false);
     }
 
     private void UnlockFields() {
@@ -138,6 +154,7 @@ public class MainScreen extends javax.swing.JFrame {
         jButtonFilter.setEnabled(true);
         jTextFieldEntryRemover.setEnabled(true);
         jButtonApagar.setEnabled(true);
+        jTextFieldSpellID.setEnabled(true);
     }
 
     private void jButtonSelectFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelectFileActionPerformed
@@ -164,15 +181,26 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSelectFileActionPerformed
 
     private void jButtonFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFilterActionPerformed
-        filteredInfo.clear();
+        //if (!filteredInfo.isEmpty()) {
+        //    LockFields();
+            filteredInfo.clear();
+        //    DoResetDataStores();
+        //    DoFilterFile(FILE_NAME);
+        //    UnlockFields();
+        //}
+
+        if (jComboBoxSelectPacketType.getSelectedIndex() != 0) {
+            filter.FilterByPacket(jComboBoxSelectPacketType.getSelectedItem().toString());
+            //JOptionPane.showMessageDialog(null, "Selecione o tipo de packet a filtrar.");
+        }
 
         if (!jTextFieldNpcEntry.getText().isEmpty()) {
             filter.FilterByEntry(jTextFieldNpcEntry.getText());
             //JOptionPane.showMessageDialog(null, "Selecione o npc.");
         }
-        if (jComboBoxSelectPacketType.getSelectedIndex() != 0) {
-            filter.FilterByPacket(jComboBoxSelectPacketType.getSelectedItem().toString());
-            //JOptionPane.showMessageDialog(null, "Selecione o tipo de packet a filtrar.");
+        
+        if (!jTextFieldSpellID.getText().isEmpty()) {
+            filter.FilterBySpell(jTextFieldSpellID.getText());
         }
         DefaultListModel listModel = new DefaultListModel();
         HashSet<String> spells = new HashSet<>();
@@ -189,6 +217,8 @@ public class MainScreen extends javax.swing.JFrame {
         jListSpells.setEnabled(true);
 
         WriteOutputFile();
+        
+        TimerAnalyzer t = new TimerAnalyzer("");
     }//GEN-LAST:event_jButtonFilterActionPerformed
 
     private void jTextFieldNpcEntryKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNpcEntryKeyTyped
@@ -206,6 +236,13 @@ public class MainScreen extends javax.swing.JFrame {
         Rewriter rw = new Rewriter();
         rw.removeLineFromFile(FILE_NAME, jTextFieldEntryRemover.getText());
     }//GEN-LAST:event_jButtonApagarActionPerformed
+
+    private void jTextFieldSpellIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSpellIDKeyTyped
+        String aloowedCharacters="0987654321";
+        if(!aloowedCharacters.contains(evt.getKeyChar()+"")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldSpellIDKeyTyped
 
     public static void main(String args[]) {
         try {
@@ -241,11 +278,13 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelFundo;
     private javax.swing.JLabel jLabelLoadedFile;
     private javax.swing.JList<String> jListSpells;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldEntryRemover;
     private javax.swing.JTextField jTextFieldNpcEntry;
+    private javax.swing.JTextField jTextFieldSpellID;
     // End of variables declaration//GEN-END:variables
 }

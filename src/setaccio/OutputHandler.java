@@ -7,7 +7,6 @@ import Packets.SpellGoPacket;
 import Packets.SpellStartPacket;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Iterator;
 import java.util.Map;
 import static setaccio.Filter.filteredInfo;
 import static setaccio.InputHandler.hmap;
@@ -21,8 +20,8 @@ public class OutputHandler {
     public static void WriteOutputFile() {
         try{
             PrintWriter writer = new PrintWriter("CastsFiltrados.txt", "UTF-8");
-
-            if (filteredInfo != null) {
+            TimerAnalyzer t = new TimerAnalyzer("");
+            if (filteredInfo != null && !filteredInfo.isEmpty()) {
                 for (Unit unit : filteredInfo) {
                     unit.sortAllPackets();
                     for (Packet p : unit.getPacketList()) {
@@ -49,7 +48,7 @@ public class OutputHandler {
                                 break;
                         }
                         
-                        System.out.println("-------Result: " + p.toString());
+                        //System.out.println("-- ResultF: " + p.toString());
                         writer.println(p.toString());
                     }
                 }
@@ -82,7 +81,7 @@ public class OutputHandler {
                                     break;
                             }
 
-                            //System.out.println(p.toString());
+                            //System.out.println("-- ResultH: " + p.toString());
                             writer.println(p.toString());
                         }
                     }
