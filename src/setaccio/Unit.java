@@ -93,11 +93,11 @@ public class Unit {
         for (Iterator<Packet> it = packetList.iterator(); it.hasNext();) {
             Packet p = it.next();
             if (p.getOpcode().equals("SMSG_SPELL_START")) {
-                if (!((SpellStartPacket)p).getSpellId().equals(spellID))
+                if (!p.toSpellStartPacket().getSpellId().equals(spellID))
                     it.remove();
             }
             if (p.getOpcode().equals("SMSG_SPELL_GO")) {
-                if (!((SpellGoPacket)p).getSpellId().equals(spellID))
+                if (!p.toSpellGoPacket().getSpellId().equals(spellID))
                     it.remove();
             }
         }
@@ -107,9 +107,9 @@ public class Unit {
         HashSet<String> spells = new HashSet<>();
         for (Packet p : packetList) {
             if (p.getOpcode().equals("SMSG_SPELL_GO"))
-                spells.add(((SpellGoPacket)p).getSpellId() + " " + ((SpellGoPacket)p).getSpellName());
+                spells.add(p.toSpellGoPacket().getSpellId() + " " + p.toSpellGoPacket().getSpellName());
             else if (p.getOpcode().equals("SMSG_SPELL_START"))
-                spells.add(((SpellStartPacket)p).getSpellId() + " " + ((SpellStartPacket)p).getSpellName());
+                spells.add(p.toSpellStartPacket().getSpellId() + " " + p.toSpellStartPacket().getSpellName());
         }
         return spells;
     }

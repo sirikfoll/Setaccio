@@ -1,5 +1,10 @@
 package setaccio;
 
+import Packets.AiReactionPacket;
+import Packets.AttackStartPacket;
+import Packets.KillLogPacket;
+import Packets.SpellGoPacket;
+import Packets.SpellStartPacket;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -18,7 +23,38 @@ public abstract class Packet implements Comparable<Packet> {
     }
 
     public abstract void parseInfo(List<String> l);
+    
+    public SpellGoPacket toSpellGoPacket() {
+        if (this instanceof SpellGoPacket)
+            return (SpellGoPacket)this;
+        return null;
+    }
 
+    public SpellStartPacket toSpellStartPacket() {
+        if (this instanceof SpellStartPacket)
+            return (SpellStartPacket)this;
+        return null;
+    }
+
+    public AttackStartPacket toAttackStartPacket() {
+        if (this instanceof AttackStartPacket)
+            return (AttackStartPacket)this;
+        return null;
+    }
+
+    public KillLogPacket toKillLogPacket() {
+        if (this instanceof KillLogPacket)
+            return (KillLogPacket)this;
+        return null;
+    }
+    
+    public AiReactionPacket toAiReactionPacket() {
+        if (this instanceof AiReactionPacket)
+            return (AiReactionPacket)this;
+        return null;
+    }
+    
+    
     @Override
     public String toString() {
         String str = "";
@@ -33,12 +69,6 @@ public abstract class Packet implements Comparable<Packet> {
             if (owner.getName() != null)
                 str += " " + owner.getName();
         }
-        return str;
-    }
-
-    public String toString(boolean simplified) {
-        String str = dateTime.toString();
-        str += " " + opcode;
         return str;
     }
 

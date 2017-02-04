@@ -1,7 +1,5 @@
 package setaccio;
 
-import Packets.SpellGoPacket;
-import Packets.SpellStartPacket;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -39,7 +37,6 @@ public class TimerAnalyzer {
                                 _isFirstGO = false;
                                 fromDateTimeSGO = p.getDateTime();
                             }
-                            p = (SpellGoPacket)p;
                             toDateTimeSGO = p.getDateTime();
                             LocalDateTime tempDateTime = LocalDateTime.from( fromDateTimeSGO );
                             long years = tempDateTime.until( toDateTimeSGO, ChronoUnit.YEARS);
@@ -56,7 +53,8 @@ public class TimerAnalyzer {
                             tempDateTime = tempDateTime.plusSeconds( seconds );
                             long milliseconds = tempDateTime.until( toDateTimeSGO, ChronoUnit.MILLIS);
                             String timer = "" + minutes + ":" + seconds + ":" + milliseconds;
-                            ((SpellGoPacket)p).setTimeUntilNext(timer);
+
+                            p.toSpellGoPacket().setTimeUntilNext(timer);
                             fromDateTimeSGO = toDateTimeSGO;
                             break;
                         }
@@ -66,7 +64,6 @@ public class TimerAnalyzer {
                                 _isFirstStart = false;
                                 fromDateTimeStart = p.getDateTime();
                             }
-                            p = (SpellStartPacket)p;
                             toDateTimeStart = p.getDateTime();
                             LocalDateTime tempDateTime = LocalDateTime.from( fromDateTimeStart );
                             long years = tempDateTime.until( toDateTimeStart, ChronoUnit.YEARS);
@@ -83,7 +80,8 @@ public class TimerAnalyzer {
                             tempDateTime = tempDateTime.plusSeconds( seconds );
                             long milliseconds = tempDateTime.until( toDateTimeStart, ChronoUnit.MILLIS);
                             String timer = "" + minutes + ":" + seconds + ":" + milliseconds;
-                            ((SpellStartPacket)p).setTimeUntilNext(timer);
+
+                            p.toSpellStartPacket().setTimeUntilNext(timer);
                             fromDateTimeStart = toDateTimeStart;
                             break;
                         }

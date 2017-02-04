@@ -181,27 +181,18 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSelectFileActionPerformed
 
     private void jButtonFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFilterActionPerformed
-        //if (!filteredInfo.isEmpty()) {
-        //    LockFields();
-            filteredInfo.clear();
-        //    DoResetDataStores();
-        //    DoFilterFile(FILE_NAME);
-        //    UnlockFields();
-        //}
+        filteredInfo.clear();
 
-        if (jComboBoxSelectPacketType.getSelectedIndex() != 0) {
+        if (jComboBoxSelectPacketType.getSelectedIndex() != 0)
             filter.FilterByPacket(jComboBoxSelectPacketType.getSelectedItem().toString());
-            //JOptionPane.showMessageDialog(null, "Selecione o tipo de packet a filtrar.");
-        }
 
-        if (!jTextFieldNpcEntry.getText().isEmpty()) {
+        if (!jTextFieldNpcEntry.getText().isEmpty())
             filter.FilterByEntry(jTextFieldNpcEntry.getText());
-            //JOptionPane.showMessageDialog(null, "Selecione o npc.");
-        }
-        
+
         if (!jTextFieldSpellID.getText().isEmpty()) {
             filter.FilterBySpell(jTextFieldSpellID.getText());
         }
+
         DefaultListModel listModel = new DefaultListModel();
         HashSet<String> spells = new HashSet<>();
         for (Unit u : Filter.filteredInfo) {
@@ -217,8 +208,6 @@ public class MainScreen extends javax.swing.JFrame {
         jListSpells.setEnabled(true);
 
         WriteOutputFile();
-        
-        TimerAnalyzer t = new TimerAnalyzer("");
     }//GEN-LAST:event_jButtonFilterActionPerformed
 
     private void jTextFieldNpcEntryKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNpcEntryKeyTyped

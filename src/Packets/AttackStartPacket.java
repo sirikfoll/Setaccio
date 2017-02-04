@@ -22,11 +22,6 @@ public class AttackStartPacket extends Packet {
     }
 
     @Override
-    public String toString(boolean simplified) {
-        return this.toString();
-    }
-
-    @Override
     public void parseInfo(List<String> lines) {
         super.setOwner(ExtractUnit(lines.get(1)));
         super.parseDateTime(lines.get(0));

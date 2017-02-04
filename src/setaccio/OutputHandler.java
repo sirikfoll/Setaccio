@@ -1,10 +1,5 @@
 package setaccio;
 
-import Packets.AiReactionPacket;
-import Packets.AttackStartPacket;
-import Packets.KillLogPacket;
-import Packets.SpellGoPacket;
-import Packets.SpellStartPacket;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
@@ -25,29 +20,6 @@ public class OutputHandler {
                 for (Unit unit : filteredInfo) {
                     unit.sortAllPackets();
                     for (Packet p : unit.getPacketList()) {
-                        switch(p.getOpcode()) {
-                            case "SMSG_AURA_UPDATE":
-                                //packet = new AuraUpdatePacket();
-                                break;
-                            case "SMSG_SPELL_START":
-                                p = (SpellStartPacket)p;
-                                break;
-                            case "SMSG_SPELL_GO":
-                                p = (SpellGoPacket)p;
-                                break;
-                            case "SMSG_ATTACK_START":
-                                p = (AttackStartPacket)p;
-                                break;
-                            case "SMSG_AI_REACTION":
-                                p = (AiReactionPacket)p;
-                                break;
-                            case "SMSG_PARTY_KILL_LOG":
-                                p = (KillLogPacket)p;
-                                break;
-                            default:
-                                break;
-                        }
-                        
                         //System.out.println("-- ResultF: " + p.toString());
                         writer.println(p.toString());
                     }
@@ -58,29 +30,6 @@ public class OutputHandler {
                     if (unit != null) {
                         unit.sortAllPackets();
                         for (Packet p : unit.getPacketList()) {
-                            switch(p.getOpcode()) {
-                                case "SMSG_AURA_UPDATE":
-                                    //packet = new AuraUpdatePacket();
-                                    break;
-                                case "SMSG_SPELL_START":
-                                    p = (SpellStartPacket)p;
-                                    break;
-                                case "SMSG_SPELL_GO":
-                                    p = (SpellGoPacket)p;
-                                    break;
-                                case "SMSG_ATTACK_START":
-                                    p = (AttackStartPacket)p;
-                                    break;
-                                case "SMSG_AI_REACTION":
-                                    p = (AiReactionPacket)p;
-                                    break;
-                                case "SMSG_PARTY_KILL_LOG":
-                                    p = (KillLogPacket)p;
-                                    break;
-                                default:
-                                    break;
-                            }
-
                             //System.out.println("-- ResultH: " + p.toString());
                             writer.println(p.toString());
                         }

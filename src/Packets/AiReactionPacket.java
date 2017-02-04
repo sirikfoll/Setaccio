@@ -19,11 +19,6 @@ public class AiReactionPacket extends Packet {
     public String toString() {
         return super.toString() + " " + status;
     }
-
-    @Override
-    public String toString(boolean simplified) {
-        return this.toString();
-    }
     /*
     ServerToClient: SMSG_AI_REACTION (0x26DA) Length: 19 ConnIdx: 1 Time: 12/26/2016 07:02:29.555 Number: 57003
     UnitGUID: Full: 0x202F3C428010DB40004427000060DCA5 Unit/0 R3023/S17447 Map: 532 (Karazhan) Entry: 17261 (Restless Skeleton) Low: 6347941

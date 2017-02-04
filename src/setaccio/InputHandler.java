@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -106,11 +105,11 @@ public class InputHandler {
             }
             br.close();
 
-            for (Map.Entry<String, Unit> entry : hmap.entrySet())
-            {
-                //entry.getValue().printAllPackets();
-            }
-            System.out.println("----------------------FIM-----------------------------");
+            //for (Map.Entry<String, Unit> entry : hmap.entrySet())
+            //{
+            //    entry.getValue().printAllPackets();
+            //}
+            System.out.println("---FIM---");
             //WriteOutputFile();
         } catch(IOException ex) {
             System.out.println("Falha na Leitura: " + ex.toString());
