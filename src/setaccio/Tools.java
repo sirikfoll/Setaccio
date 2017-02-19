@@ -78,7 +78,7 @@ public class Tools {
         else
             type = words[1].replace("/0", "");
 
-        if (type.equals("Creature") || type.equals("GameObject")) {
+        if (type.equals("Creature") || type.equals("GameObject") || type.equals("Vehicle")) {
             entry = line.substring(line.indexOf("Entry:") + 7, line.indexOf(" ", line.indexOf("Entry:") + 7));
             int start = line.indexOf("(", line.indexOf("Entry")) + 1;
             if (start != 0)
