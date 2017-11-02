@@ -63,7 +63,7 @@ public class SpellGoPacket extends Packet {
             index = getLineIndexThatContainsPrefix(lines, "Target Flags:");
         String[] split = lines.get(index).split("\\s+");
         String targetFlagsString = split[split.length - 1].replace('(', ' ').replace(')', ' ').trim();
-        targetFlags=Integer.valueOf(targetFlagsString);
+/*        targetFlags=Integer.valueOf(targetFlagsString);
         if(targetFlags == 0){
             target = this.caster;
         }
@@ -72,7 +72,7 @@ public class SpellGoPacket extends Packet {
             if (target == null)
                 target = this.caster;
         }
-        else
+        else*/
             target = this.caster;
         /*
         (Cast) (Target) Name: 

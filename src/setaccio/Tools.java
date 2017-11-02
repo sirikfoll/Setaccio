@@ -82,7 +82,7 @@ public class Tools {
             entry = line.substring(line.indexOf("Entry:") + 7, line.indexOf(" ", line.indexOf("Entry:") + 7));
             int start = line.indexOf("(", line.indexOf("Entry")) + 1;
             if (start != 0)
-                name = line.substring(start, line.indexOf("Low") - 2);
+                name = line.substring(start, line.indexOf("Low:") - 2);
         } else if (type.equals("Player"))
             name = "Player";
 

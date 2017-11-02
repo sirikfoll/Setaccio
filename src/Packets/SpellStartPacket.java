@@ -54,14 +54,14 @@ public class SpellStartPacket extends Packet {
             index = getLineIndexThatContainsPrefix(lines, "Target Flags:");
         String[] split = lines.get(index).split("\\s+");
         String targetFlagsString = split[split.length - 1].replace('(', ' ').replace(')', ' ').trim();
-        targetFlags=Integer.valueOf(targetFlagsString);
+        /*targetFlags=Integer.valueOf(targetFlagsString);
         if(targetFlags == 0){
             target = this.caster;
         }
         else if(targetFlags == 2){
             target = ExtractUnit(lines.get(getLineIndexThatContainsPrefix(lines, "(Cast) (Target) Unit: Full:")));
         }
-        else
+        else*/
             target = this.caster;
         /*
         (Cast) (Target) Name:
